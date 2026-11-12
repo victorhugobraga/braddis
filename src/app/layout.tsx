@@ -25,6 +25,14 @@ export const metadata: Metadata = {
   title: "Braddis — Inovação criativa",
   description:
     "Agência de inovação criativa. Tecnologia acelera, quem assina é a mão.",
+  icons: {
+    icon: [
+      { url: "/media/favicon.ico", sizes: "any" },
+      { url: "/media/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/media/favicon.ico",
+    apple: "/media/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
