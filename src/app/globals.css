@@ -1,0 +1,276 @@
+:root {
+  --ink: #0a0ba8;
+  --ink-deep: #14083a;
+  --accent: #ff5b3a;
+  --paper: #f2ede4;
+  --sun: #ffd23f;
+  --lilac: #c9c6ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+}
+
+body {
+  color: var(--ink-deep);
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.serif {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+.hand {
+  font-family: var(--font-caveat), cursive;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  background: var(--paper);
+  color: var(--ink-deep);
+  overflow: hidden;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* grain de papel */
+.grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* botões */
+.btn {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.btn:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--ink-deep) !important;
+}
+
+/* marquee */
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.mq {
+  overflow: hidden;
+}
+.trk {
+  display: flex;
+  width: max-content;
+  animation: slide 40s linear infinite;
+}
+.mq:hover .trk {
+  animation-play-state: paused;
+}
+
+/* cards polaroid dos carrosséis */
+.card {
+  position: relative;
+  flex: none;
+  margin-right: 28px;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 6px 8px 0 rgba(0, 0, 0, 0.22);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 84px;
+  height: 24px;
+  margin-left: -42px;
+  background: rgba(255, 255, 255, 0.6);
+  transform: rotate(-3deg);
+  z-index: 2;
+}
+.trk > .card:nth-child(odd) {
+  transform: rotate(-1.4deg);
+}
+.trk > .card:nth-child(even) {
+  transform: rotate(1.2deg) translateY(14px);
+}
+
+/* nav */
+.nav a.lnk {
+  text-decoration: none;
+  position: relative;
+}
+.nav a.lnk:hover {
+  text-decoration: underline wavy;
+  text-underline-offset: 6px;
+}
+
+/* cards de pilar */
+.pcard {
+  transition: transform 0.2s ease;
+}
+.pcard:hover {
+  transform: rotate(0deg) translateY(-6px) !important;
+}
+
+/* imagem do hero */
+.hero-photo {
+  position: absolute;
+  right: -34px;
+  bottom: -76px;
+  height: 634px;
+  width: 467px;
+  max-width: none;
+  display: block;
+  pointer-events: none;
+  object-fit: cover;
+  object-position: 0% 0%;
+  object-view-box: inset(0% 0.0003% 9.4286% 0%);
+}
+
+@media (max-width: 720px) {
+  .hero-photo {
+    right: -20px;
+    width: 340px;
+    height: 460px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trk {
+    animation: none;
+  }
+  .mq {
+    overflow-x: auto;
+  }
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 900px) {
+  .wrap,
+  .sec-in {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+  }
+  .collage {
+    height: 600px !important;
+    max-width: 100% !important;
+  }
+  .fig2 {
+    left: -20px !important;
+  }
+  .fig1 {
+    left: 0 !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .wrap,
+  .sec-in {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .sec-in {
+    padding-top: 72px !important;
+    padding-bottom: 56px !important;
+  }
+  .nav-bar {
+    padding-top: 16px !important;
+    padding-bottom: 8px !important;
+    justify-content: center !important;
+  }
+  .nav-bar nav {
+    justify-content: center;
+    gap: 4px 20px !important;
+    font-size: 15px !important;
+  }
+  .hero {
+    padding-bottom: 48px !important;
+    gap: 24px !important;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 11vw, 56px) !important;
+  }
+  .hero-copy p {
+    font-size: 18px !important;
+  }
+  .collage {
+    height: 470px !important;
+  }
+  .hero-photo {
+    right: -10px;
+    bottom: -40px;
+    width: 280px;
+    height: 380px;
+  }
+  .fig1,
+  .fig2 {
+    display: none !important;
+  }
+  .manifesto {
+    padding-top: 72px !important;
+    padding-bottom: 48px !important;
+  }
+  .card {
+    margin-right: 18px;
+    max-width: 78vw;
+  }
+  .card > * {
+    min-width: 0;
+  }
+  .mq .card {
+    height: 340px !important;
+  }
+  .page h2 {
+    font-size: clamp(38px, 12vw, 64px) !important;
+  }
+  .page h3 {
+    overflow-wrap: anywhere;
+  }
+  section[style*="border-radius: 48px"] {
+    border-radius: 32px 32px 0 0 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .collage {
+    height: 430px !important;
+  }
+  .hero-photo {
+    width: 240px;
+    height: 330px;
+  }
+}
